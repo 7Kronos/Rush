@@ -137,6 +137,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="World\Bee.cs" />
     <Compile Include="World\Hive.cs" />
+    <Compile Include="World\States\BeeStates.cs" />
+    <Compile Include="World\States\IBasicState.cs" />
     <Compile Include="World\Thing.cs" />
   </ItemGroup>
   <ItemGroup>
