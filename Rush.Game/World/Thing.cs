@@ -10,8 +10,8 @@ namespace Rush.World
 {
     public abstract class Thing
     {
-        public Point Position { get; set; }
-        public Point Destination { get; set; }
+        public Vector2 Position { get; set; }
+        public Nullable<Vector2> Destination { get; set; }
 
         public Thing()
         {

@@ -83,13 +83,15 @@ namespace Rush
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
-            _spriteBatch.Begin();
+            GraphicsDevice.Clear(Color.Yellow);
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
 
             base.Draw(gameTime);
 
             foreach (var t in Things)
                 t.Draw(_graphics, _spriteBatch, gameTime);
+
+            _spriteBatch.DrawString(defaultSystemFont, gameTime.TotalGameTime.ToString(), new Vector2(5, 5), Color.Pink);
 
             _spriteBatch.End();
         }

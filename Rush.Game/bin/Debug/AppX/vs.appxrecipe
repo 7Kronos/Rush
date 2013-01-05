@@ -5,7 +5,7 @@
     <WindowsUser>Kronos</WindowsUser>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
-    <RegisteredManifestChecksum>0E8A9E1A6C604F3A3E151D6CD01B84EB8A6B17F8D0B63802E9E2BC1095383B99</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>1D25A2065E4B04395EBD90F0F57FAF93E2D62BD8506FEA3266076BFF0A64FF33</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>3375655d-7f56-4ad9-b00d-eba1d5b6a18c_1.0.0.0_neutral__d8nr971gfxx9c</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>3375655d-7f56-4ad9-b00d-eba1d5b6a18c_d8nr971gfxx9c!App</RegisteredUserModeAppID>
     <RegisteredPackageID>3375655d-7f56-4ad9-b00d-eba1d5b6a18c</RegisteredPackageID>
@@ -16,17 +16,17 @@
     <AppXManifest Include="C:\Projets\Rush\Rush.Game\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-01-05T19:30:26.136</Modified>
+      <Modified>2013-01-05T22:19:55.013</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Projets\Rush\Rush.Game\bin\Debug\Rush.Game.exe">
       <PackagePath>Rush.Game.exe</PackagePath>
-      <Modified>2013-01-05T20:49:29.332</Modified>
+      <Modified>2013-01-05T22:25:44.502</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Projets\Rush\Rush.Game\bin\Debug\Rush.Game.pdb">
       <PackagePath>Rush.Game.pdb</PackagePath>
-      <Modified>2013-01-05T20:49:29.312</Modified>
+      <Modified>2013-01-05T22:25:44.482</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\MonoGame.Framework.Windows8.dll">
       <PackagePath>MonoGame.Framework.Windows8.dll</PackagePath>
@@ -90,11 +90,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Projets\Rush\Rush.Game\Assets\Fonts\Pericles6.spritefont">
       <PackagePath>Assets\Fonts\Pericles6.spritefont</PackagePath>
-      <Modified>2013-01-05T19:01:54.274</Modified>
+      <Modified>2013-01-05T21:54:02.206</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Projets\Rush\Rush.Game\Assets\Fonts\Segoe.spritefont">
       <PackagePath>Assets\Fonts\Segoe.spritefont</PackagePath>
-      <Modified>2012-12-11T19:29:58.826</Modified>
+      <Modified>2013-01-05T21:54:02.218</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Projets\Rush\Rush.Game\Assets\Fonts\Pericles6.xnb">
       <PackagePath>Assets\Fonts\Pericles6.xnb</PackagePath>
@@ -103,6 +103,10 @@
     <AppxPackagedFile Include="C:\Projets\Rush\Rush.Game\Assets\Fonts\Segoe.xnb">
       <PackagePath>Assets\Fonts\Segoe.xnb</PackagePath>
       <Modified>2012-12-11T19:30:34.611</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Projets\Rush\Rush.Game\Assets\Textures\bee.png">
+      <PackagePath>Assets\Textures\bee.png</PackagePath>
+      <Modified>2013-01-05T22:22:05.968</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Projets\Rush\Rush.Game\Assets\Textures\hive.png">
       <PackagePath>Assets\Textures\hive.png</PackagePath>
@@ -130,7 +134,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Projets\Rush\Rush.Game\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2013-01-05T19:01:55.871</Modified>
+      <Modified>2013-01-05T22:14:49.117</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

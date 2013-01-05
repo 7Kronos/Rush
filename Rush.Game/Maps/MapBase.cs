@@ -37,15 +37,16 @@ namespace Rush.Maps
         public virtual void Load(ContentManager contentManager)
         {
             RegisterTexture("defaultHive", contentManager.Load<Texture2D>(@"Textures\hive"));
+            RegisterTexture("defaultBee", contentManager.Load<Texture2D>(@"Textures\bee"));
         }
 
-        protected void Spawn(Point location, int level = 1)
+        protected void Spawn(Vector2 location, int level = 1)
         {
             _hives.Add(new Hive(this) { 
                 Position = location,
                 Level = level,
                 Upgrading = false,
-                Destination = Point.Zero
+                Destination = Vector2.Zero
             });
         }
     }

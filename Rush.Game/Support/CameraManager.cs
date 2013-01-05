@@ -10,22 +10,22 @@ namespace Rush.Support
     public static class CameraManager
     {
         public static float ZoomFactor { get; set; }
-        public static Point Location { get; set; }
+        public static Vector2 Location { get; set; }
 
         static CameraManager ()
 	    {
-            Location = Point.Zero;
+            Location = Vector2.Zero;
             ZoomFactor = 1;
 	    }
 
         /// <summary>
-        /// Calcule la localisation d'un point du jeu sur le viewport
+        /// Calcule la localisation d'un Vector2 du jeu sur le viewport
         /// </summary>
-        /// <param name="virtualPoint"></param>
+        /// <param name="virtualVector2"></param>
         /// <returns></returns>
-        public static Point GetPointInScreen(Point virtualPoint)
+        public static Point GetPointInScreen(Vector2 virtualVector2)
         {
-            return new Point((virtualPoint.X * 10) + 500, (virtualPoint.Y * 10) + 500);
+            return new Point((int)((virtualVector2.X * 10) + 500), (int)((virtualVector2.Y * 10) + 500));
         }
     }
 }

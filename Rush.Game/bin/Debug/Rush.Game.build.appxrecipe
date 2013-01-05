@@ -76,6 +76,9 @@
     <AppxPackagedFile Include="C:\Projets\Rush\Rush.Game\Assets\Fonts\Segoe.xnb">
       <PackagePath>Assets\Fonts\Segoe.xnb</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Projets\Rush\Rush.Game\Assets\Textures\bee.png">
+      <PackagePath>Assets\Textures\bee.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Projets\Rush\Rush.Game\Assets\Textures\hive.png">
       <PackagePath>Assets\Textures\hive.png</PackagePath>
     </AppxPackagedFile>

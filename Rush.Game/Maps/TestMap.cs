@@ -15,8 +15,8 @@ namespace Rush.Maps
         {
             base.Load(contentManager);
 
-            Spawn(new Point(-10, 0));
-            Spawn(new Point(+10, 0));
+            Spawn(new Vector2(-10, 0));
+            Spawn(new Vector2(+10, 0));
         }
     }
 }
