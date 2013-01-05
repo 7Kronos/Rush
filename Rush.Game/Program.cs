@@ -8,7 +8,7 @@ namespace Rush
     public static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        /// The main entry Vector2 for the application.
         /// </summary>
         static void Main()
         {

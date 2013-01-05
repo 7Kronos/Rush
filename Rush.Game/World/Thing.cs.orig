@@ -14,6 +14,7 @@ namespace Rush.World
         public Vector2 Position { get; set; }
         public Nullable<Vector2> Destination { get; set; }
 
+<<<<<<< HEAD
         protected IBasicState<Thing> CurrentState { get; set; }
 
         public static readonly IBasicState<Thing> EmptyState = new EmptyState();
@@ -21,12 +22,20 @@ namespace Rush.World
         public Thing()
         {
             CurrentState = EmptyState;
+        }
+
+        protected virtual void Update(GameTime gameTime)
+        {
+            CurrentState.Update(this, gameTime);
+=======
+        public Thing()
+        {
             Main.Things.Add(this);
+>>>>>>> a5788d9b27c392d4da462cd77a1ff42a7f9895bf
         }
 
         public virtual void Update(GameTime gameTime)
         {
-            CurrentState.Update(this, gameTime);
         }
 
         public virtual void Draw(GraphicsDeviceManager gfx, SpriteBatch batch, GameTime gameTime)
