@@ -1,1 +1,1 @@
-C:\Projets\Rush.Game\Rush.Game\Rush.Game.csproj;neutral
+C:\Projets\Rush\Rush.Game\Rush.Game.csproj;neutral

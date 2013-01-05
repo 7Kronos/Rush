@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,16 @@ namespace Rush.World
         public Point Position { get; set; }
         public Point Destination { get; set; }
 
-        protected virtual void Update(GameTime gameTime)
+        public Thing()
+        {
+            Main.Things.Add(this);
+        }
+
+        public virtual void Update(GameTime gameTime)
         {
         }
 
-        protected virtual void Draw(GameTime gameTime)
+        public virtual void Draw(GraphicsDeviceManager gfx, SpriteBatch batch, GameTime gameTime)
         {
         }
     }

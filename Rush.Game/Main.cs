@@ -1,5 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Rush.Maps;
+using Rush.World;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 
 namespace Rush
 {
@@ -10,11 +14,15 @@ namespace Rush
     {
         GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
+        Universe _universe;
+        public static ConcurrentBag<Thing> Things;
+        public static SpriteFont defaultSystemFont;
 
         public Main()
         {
             _graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            Content.RootDirectory = "Assets";
+            Things = new ConcurrentBag<Thing>();
         }
 
         /// <summary>
@@ -40,6 +48,9 @@ namespace Rush
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            defaultSystemFont = Content.Load<SpriteFont>(@"Fonts\Segoe");
+            _universe = new Universe();
+            _universe.LoadMap<TestMap>(Content);
         }
 
         /// <summary>
@@ -61,6 +72,9 @@ namespace Rush
             // TODO: Add your update logic here
 
             base.Update(gameTime);
+
+            foreach (var t in Things)
+                t.Update(gameTime);
         }
 
         /// <summary>
@@ -69,11 +83,15 @@ namespace Rush
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
+            GraphicsDevice.Clear(Color.Black);
+            _spriteBatch.Begin();
 
             base.Draw(gameTime);
+
+            foreach (var t in Things)
+                t.Draw(_graphics, _spriteBatch, gameTime);
+
+            _spriteBatch.End();
         }
     }
 }
