@@ -24,10 +24,10 @@ namespace Rush.World
 
         public Bee() : base()
         {
-            CurrentState = States[0] as IBasicState<Thing>;
+            CurrentState = States[0];
         }
 
-        public override void Draw(Microsoft.Xna.Framework.GraphicsDeviceManager gfx, SpriteBatch batch, GameTime gameTime)
+        public override void Draw(GraphicsDeviceManager gfx, SpriteBatch batch, GameTime gameTime)
         {
             base.Draw(gfx, batch, gameTime);
 

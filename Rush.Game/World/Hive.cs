@@ -47,10 +47,10 @@ namespace Rush.World
 
         private Vector2 GetRandomPosition()
         {
-            var deltaX = Randomizer.Next(-10, 10);
-            var deltaY = Randomizer.Next(-10, 10);
+            var len = Randomizer.Next(0, 10);
+            var angle = Randomizer.Next(0, 359);
 
-            return Position + new Vector2(deltaX, deltaY);
+            return Position + new Vector2((float)(len * Math.Cos(MathHelper.ToRadians(angle))), (float)(len * Math.Sin(MathHelper.ToRadians(angle))));
         }
 
         public override void Draw(GraphicsDeviceManager gfx, SpriteBatch batch, GameTime gameTime)

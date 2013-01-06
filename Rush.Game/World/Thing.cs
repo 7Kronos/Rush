@@ -20,7 +20,7 @@ namespace Rush.World
 
         public Thing()
         {
-            CurrentState = EmptyState;
+            CurrentState = new EmptyState();
             Main.Things.Add(this);
         }
 
