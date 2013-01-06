@@ -2,98 +2,149 @@
 using Microsoft.Xna.Framework.Graphics;
 using Rush.Maps;
 using Rush.World;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 namespace Rush
 {
-    /// <summary>
-    /// This is the main type for your game
-    /// </summary>
-    public class Main : Game
-    {
-        GraphicsDeviceManager _graphics;
-        SpriteBatch _spriteBatch;
-        Universe _universe;
-        public static ConcurrentBag<Thing> Things;
-        public static SpriteFont defaultSystemFont;
+	/// <summary>
+	/// This is the main type for your game
+	/// </summary>
+	public class Main : Game
+	{
+		GraphicsDeviceManager _graphics;
+		SpriteBatch _spriteBatch;
+		Universe _universe;
+		public static ConcurrentBag<Thing> Things;
+		public static SpriteFont defaultSystemFont;
 
-        public Main()
-        {
-            _graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Assets";
-            Things = new ConcurrentBag<Thing>();
-        }
+		private ConcurrentBag<Bee> circletest;
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
-        protected override void Initialize()
-        {
-            // TODO: Add your initialization logic here
+		public Main()
+		{
+			_graphics = new GraphicsDeviceManager(this);
+			Content.RootDirectory = "Assets";
+			Things = new ConcurrentBag<Thing>();
 
-            base.Initialize();
-        }
+		}
 
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
-        protected override void LoadContent()
-        {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+		/// <summary>
+		/// Allows the game to perform any initialization it needs to before starting to run.
+		/// This is where it can query for any required services and load any non-graphic
+		/// related content.  Calling base.Initialize will enumerate through any components
+		/// and initialize them as well.
+		/// </summary>
+		protected override void Initialize()
+		{
+			// TODO: Add your initialization logic here
+			base.Initialize();
+		}
 
-            // TODO: use this.Content to load your game content here
-            defaultSystemFont = Content.Load<SpriteFont>(@"Fonts\Segoe");
-            _universe = new Universe();
-            _universe.LoadMap<TestMap>(Content);
-        }
+		/// <summary>
+		/// LoadContent will be called once per game and is the place to load
+		/// all of your content.
+		/// </summary>
+		protected override void LoadContent()
+		{
+			// Create a new SpriteBatch, which can be used to draw textures.
+			_spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// all content.
-        /// </summary>
-        protected override void UnloadContent()
-        {
-            // TODO: Unload any non ContentManager content here
-        }
+			// TODO: use this.Content to load your game content here
+			defaultSystemFont = Content.Load<SpriteFont>(@"Fonts\Segoe");
+			_universe = new Universe();
+			_universe.LoadMap<TestMap>(Content);
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Update(GameTime gameTime)
-        {
-            // TODO: Add your update logic here
+			InitCircleTest();
+		}
 
-            base.Update(gameTime);
+		#region circle test
 
-            foreach (var t in Things)
-                t.Update(gameTime);
-        }
+		private void InitCircleTest()
+		{
+			circletest = new ConcurrentBag<Bee>();
+			Point Centralpoint = new Point(40, -10);
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.Yellow);
-            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
+			float radius = 5;
+			AddBee(Centralpoint, radius, 360 / 6 * 0);
+			AddBee(Centralpoint, radius, 360 / 6 * 1);
+			AddBee(Centralpoint, radius, 360 / 6 * 2);
+			AddBee(Centralpoint, radius, 360 / 6 * 3);
+			AddBee(Centralpoint, radius, 360 / 6 * 4);
+			AddBee(Centralpoint, radius, 360 / 6 * 5);
+			AddBee(Centralpoint, radius, 360 / 6 * 6);
+			AddBee(Centralpoint, radius, 360 / 6 * 7);
+			AddBee(Centralpoint, radius, 360 / 6 * 8);
+			AddBee(Centralpoint, radius, 360 / 6 * 9);
+			AddBee(Centralpoint, radius, 360 / 6 * 10);
+			AddBee(Centralpoint, radius, 360 / 6 * 11);
+		}
 
-            base.Draw(gameTime);
+		private void AddBee(Point Centralpoint, float radius, float angle)
+		{
+			Bee bee1 = new Bee()
+			{
+				CurrentHive = null,
+				Destination = null,
+				Position = determinepositionincircle(Centralpoint, radius, angle)
+			};
+			bee1.SpriteTexture = _universe.Map.GetTexture(MapBase.__beeTexture);
+			Things.Add(bee1);
+			circletest.Add(bee1);
+		}
 
-            foreach (var t in Things)
-                t.Draw(_graphics, _spriteBatch, gameTime);
+		private Vector2 determinepositionincircle(Point Centralpoint, float radius, float angle)
+		{
+			// x(t) = r cos(t) + j
+			// y(t) = r sin(t) + k
+			float x = radius * (float)Math.Cos(angle) + Centralpoint.X;
+			float y = radius * (float)Math.Sin(angle) + Centralpoint.Y;
+			Vector2 res = new Vector2(x, y);
+			return res;
+		}
 
-            _spriteBatch.DrawString(defaultSystemFont, gameTime.TotalGameTime.ToString(), new Vector2(5, 5), Color.Pink);
+		#endregion
 
-            _spriteBatch.End();
-        }
-    }
+		/// <summary>
+		/// UnloadContent will be called once per game and is the place to unload
+		/// all content.
+		/// </summary>
+		protected override void UnloadContent()
+		{
+			// TODO: Unload any non ContentManager content here
+		}
+
+		/// <summary>
+		/// Allows the game to run logic such as updating the world,
+		/// checking for collisions, gathering input, and playing audio.
+		/// </summary>
+		/// <param name="gameTime">Provides a snapshot of timing values.</param>
+		protected override void Update(GameTime gameTime)
+		{
+			// TODO: Add your update logic here
+			base.Update(gameTime);
+
+			foreach (var t in Things)
+				t.Update(gameTime);
+		}
+
+		/// <summary>
+		/// This is called when the game should draw itself.
+		/// </summary>
+		/// <param name="gameTime">Provides a snapshot of timing values.</param>
+		protected override void Draw(GameTime gameTime)
+		{
+			GraphicsDevice.Clear(Color.Yellow);
+			_spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
+
+			base.Draw(gameTime);
+
+			foreach (var t in Things)
+				t.Draw(_graphics, _spriteBatch, gameTime);
+
+			_spriteBatch.DrawString(defaultSystemFont, gameTime.TotalGameTime.ToString(), new Vector2(5, 5), Color.Pink);
+
+			_spriteBatch.End();
+		}
+	}
 }

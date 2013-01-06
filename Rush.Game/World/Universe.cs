@@ -15,7 +15,7 @@ namespace Rush.World
     /// </summary>
     public class Universe
     {
-        MapBase Map;
+        public MapBase Map { get; set; }
 
         public Universe()
         {

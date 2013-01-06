@@ -44,7 +44,7 @@ namespace Rush.World
 			base.Update(gameTime);
 		}
 
-        public override void Draw(GraphicsDeviceManager gfx, SpriteBatch batch, GameTime gameTime)
+		public override void Draw(GraphicsDeviceManager gfx, SpriteBatch batch, GameTime gameTime)
 		{
 			base.Draw(gfx, batch, gameTime);
 
