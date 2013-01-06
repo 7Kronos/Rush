@@ -10,9 +10,10 @@ namespace Rush.World
 	{
 		#region State
 
-		private static readonly IBeeState[] States = {
+		private readonly IBeeState[] States = {
 			new Standby(),
-			new Move()
+			new Move(),
+			new TestState()
 		};
 
 		private IBeeState _currentState;
@@ -32,10 +33,18 @@ namespace Rush.World
 
 		public Hive CurrentHive { get; set; }
 		public Texture2D SpriteTexture { get; set; }
+		public double Speed { get; set; }
 
 		public Bee() : base()
 		{
+			Speed = 1;
 			CurrentState = States[0];
+		}
+
+		public void DoTest()
+		{
+			_currentState = States[2];
+
 		}
 
 		public override void Update(GameTime gameTime)

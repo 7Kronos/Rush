@@ -63,21 +63,10 @@ namespace Rush
 		private void InitCircleTest()
 		{
 			circletest = new ConcurrentBag<Bee>();
-			Point Centralpoint = new Point(40, -10);
+			Point Centralpoint = new Point(0, 0);
 
 			float radius = 5;
 			AddBee(Centralpoint, radius, 360 / 6 * 0);
-			AddBee(Centralpoint, radius, 360 / 6 * 1);
-			AddBee(Centralpoint, radius, 360 / 6 * 2);
-			AddBee(Centralpoint, radius, 360 / 6 * 3);
-			AddBee(Centralpoint, radius, 360 / 6 * 4);
-			AddBee(Centralpoint, radius, 360 / 6 * 5);
-			AddBee(Centralpoint, radius, 360 / 6 * 6);
-			AddBee(Centralpoint, radius, 360 / 6 * 7);
-			AddBee(Centralpoint, radius, 360 / 6 * 8);
-			AddBee(Centralpoint, radius, 360 / 6 * 9);
-			AddBee(Centralpoint, radius, 360 / 6 * 10);
-			AddBee(Centralpoint, radius, 360 / 6 * 11);
 		}
 
 		private void AddBee(Point Centralpoint, float radius, float angle)
@@ -91,6 +80,7 @@ namespace Rush
 			bee1.SpriteTexture = _universe.Map.GetTexture(MapBase.__beeTexture);
 			Things.Add(bee1);
 			circletest.Add(bee1);
+			bee1.DoTest();
 		}
 
 		private Vector2 determinepositionincircle(Point Centralpoint, float radius, float angle)
