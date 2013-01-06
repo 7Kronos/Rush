@@ -7,34 +7,35 @@ using Microsoft.Xna.Framework;
 
 namespace Rush.World.States.Bee
 {
-    public interface IBeeState : IBasicState<Rush.World.Bee>
-    {
+	public interface IBeeState
+	{
+		void Update(Rush.World.Bee thing, GameTime gameTime);
+		void Draw(Rush.World.Bee thing, GameTime gameTime);
+	}
 
-    }
+	public class Standby : IBeeState
+	{
+		public void Update(Rush.World.Bee thing, GameTime gameTime)
+		{
 
-    public class Standby : IBeeState
-    {
-        public void Update(Rush.World.Bee thing, GameTime gameTime)
-        {
+		}
 
-        }
+		public void Draw(Rush.World.Bee thing, GameTime gameTime)
+		{
 
-        public void Draw(Rush.World.Bee thing, GameTime gameTime)
-        {
+		}
+	}
 
-        }
-    }
+	public class Move : IBeeState
+	{
+		public void Update(Rush.World.Bee thing, GameTime gameTime)
+		{
 
-    public class Move : IBeeState
-    {
-        public void Update(Rush.World.Bee thing, GameTime gameTime)
-        {
+		}
 
-        }
+		public void Draw(Rush.World.Bee thing, GameTime gameTime)
+		{
 
-        public void Draw(Rush.World.Bee thing, GameTime gameTime)
-        {
-
-        }
-    }
+		}
+	}
 }

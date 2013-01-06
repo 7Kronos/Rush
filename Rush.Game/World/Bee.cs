@@ -1,41 +1,58 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Rush.Support;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
 using Rush.World.States;
 using Rush.World.States.Bee;
 
 namespace Rush.World
 {
-    public class Bee : Thing
-    {
-        private static readonly IBeeState[] States = {
-            new Standby(),
-            new Move()
-        };
+	public class Bee : Thing
+	{
+		#region State
 
-        public Hive CurrentHive { get; set; }
-        public Texture2D SpriteTexture { get; set; }
+		private static readonly IBeeState[] States = {
+			new Standby(),
+			new Move()
+		};
 
-        public Bee() : base()
-        {
-            CurrentState = States[0];
-        }
+		private IBeeState _currentState;
+		protected IBeeState CurrentState
+		{
+			get { return _currentState; }
+			set
+			{
+				if (value == null)
+					_currentState = States[0];
+				else
+					_currentState = value;
+			}
+		}
+
+		#endregion
+
+		public Hive CurrentHive { get; set; }
+		public Texture2D SpriteTexture { get; set; }
+
+		public Bee() : base()
+		{
+			CurrentState = States[0];
+		}
+
+		public override void Update(GameTime gameTime)
+		{
+			CurrentState.Update(this, gameTime);
+			base.Update(gameTime);
+		}
 
         public override void Draw(GraphicsDeviceManager gfx, SpriteBatch batch, GameTime gameTime)
-        {
-            base.Draw(gfx, batch, gameTime);
+		{
+			base.Draw(gfx, batch, gameTime);
 
-            Point baseLocation = CameraManager.GetPointInScreen(Position);
-            baseLocation.X -= 4;
-            baseLocation.Y -= 4;
+			Point baseLocation = CameraManager.GetPointInScreen(Position);
+			baseLocation.X -= 4;
+			baseLocation.Y -= 4;
 
-            batch.Draw(SpriteTexture, new Rectangle(baseLocation.X, baseLocation.Y, 8, 8), Color.White);
-        }
-    }
+			batch.Draw(SpriteTexture, new Rectangle(baseLocation.X, baseLocation.Y, 8, 8), Color.White);
+		}
+	}
 }
