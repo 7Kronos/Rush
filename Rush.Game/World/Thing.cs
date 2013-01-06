@@ -14,24 +14,17 @@ namespace Rush.World
         public Vector2 Position { get; set; }
         public Nullable<Vector2> Destination { get; set; }
 
-        protected IBasicState<Thing> CurrentState { get; set; }
-
-        public static readonly IBasicState<Thing> EmptyState = new EmptyState();
-
         public Thing()
         {
-            CurrentState = EmptyState;
             Main.Things.Add(this);
         }
 
         public virtual void Update(GameTime gameTime)
         {
-            CurrentState.Update(this, gameTime);
         }
 
         public virtual void Draw(GraphicsDeviceManager gfx, SpriteBatch batch, GameTime gameTime)
         {
-            CurrentState.Draw(this, gameTime);
         }
     }
 }
