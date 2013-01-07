@@ -11,9 +11,9 @@ namespace Rush.World
 		#region State
 
 		private readonly IBeeState[] States = {
+			new Empty(),
 			new Standby(),
 			new Move(),
-			new TestState()
 		};
 
 		private IBeeState _currentState;
@@ -33,18 +33,12 @@ namespace Rush.World
 
 		public Hive CurrentHive { get; set; }
 		public Texture2D SpriteTexture { get; set; }
-		public double Speed { get; set; }
+		public float Speed { get; set; }
 
 		public Bee() : base()
 		{
-			Speed = 1;
-			CurrentState = States[0];
-		}
-
-		public void DoTest()
-		{
-			_currentState = States[2];
-
+			Speed = 1f;
+			CurrentState = States[1];
 		}
 
 		public override void Update(GameTime gameTime)
@@ -62,6 +56,7 @@ namespace Rush.World
 			baseLocation.Y -= 4;
 
 			batch.Draw(SpriteTexture, new Rectangle(baseLocation.X, baseLocation.Y, 8, 8), Color.White);
+			CurrentState.Draw(gfx, batch, gameTime);
 		}
 	}
 }

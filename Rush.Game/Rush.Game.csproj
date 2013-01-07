@@ -141,7 +141,6 @@
     <Compile Include="World\Bee.cs" />
     <Compile Include="World\Hive.cs" />
     <Compile Include="World\States\BeeStates.cs" />
-    <Compile Include="World\States\IBasicState.cs" />
     <Compile Include="World\Thing.cs" />
     <Compile Include="World\Universe.cs" />
   </ItemGroup>

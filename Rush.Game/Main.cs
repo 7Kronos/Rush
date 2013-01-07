@@ -21,8 +21,11 @@ namespace Rush
 
 		private ConcurrentBag<Bee> circletest;
 
+		public static Main MainStatic { get; set; }
+
 		public Main()
 		{
+			MainStatic = this;
 			_graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Assets";
 			Things = new ConcurrentBag<Thing>();
@@ -55,7 +58,7 @@ namespace Rush
 			_universe = new Universe();
 			_universe.LoadMap<TestMap>(Content);
 
-			InitCircleTest();
+			//InitCircleTest();
 		}
 
 		#region circle test
@@ -67,6 +70,29 @@ namespace Rush
 
 			float radius = 5;
 			AddBee(Centralpoint, radius, 360 / 6 * 0);
+
+			Bee bee1 = new Bee()
+			{
+				CurrentHive = null,
+				Destination = null,
+				Position = new Vector2(0, 0)
+			};
+			bee1.SpriteTexture = _universe.Map.GetTexture(MapBase.__beeTexture);
+			Things.Add(bee1);
+			circletest.Add(bee1);
+		}
+
+		public void AddBee(Vector2 position)
+		{
+			Bee bee1 = new Bee()
+			{
+				CurrentHive = null,
+				Destination = null,
+				Position = position
+			};
+			bee1.SpriteTexture = _universe.Map.GetTexture(MapBase.__beeTexture);
+			Things.Add(bee1);
+			circletest.Add(bee1);
 		}
 
 		private void AddBee(Point Centralpoint, float radius, float angle)
@@ -75,12 +101,11 @@ namespace Rush
 			{
 				CurrentHive = null,
 				Destination = null,
-				Position = determinepositionincircle(Centralpoint, radius, angle)
+				Position = new Vector2(20, -20)
 			};
 			bee1.SpriteTexture = _universe.Map.GetTexture(MapBase.__beeTexture);
 			Things.Add(bee1);
 			circletest.Add(bee1);
-			bee1.DoTest();
 		}
 
 		private Vector2 determinepositionincircle(Point Centralpoint, float radius, float angle)
